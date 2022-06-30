@@ -1,0 +1,61 @@
+<div class="container-fluid px-0">
+<div class="cajita">
+<center>
+<h1> Jugadas restantes:  @ViewBag.CantidadJugadas</h1>
+<h1> Importe:   @ViewBag.ImporteAbierto</h1>
+</center>
+</div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-2">
+    @for(int i = 0; i < 13; i++){
+        if (ViewBag.ImportesDescartados.Contains(@ViewBag.Importes[i]))
+        {
+        <button class="btn btn-outline-secondary btn-lg rectangulo">$@ViewBag.Importes[i]</button>
+        }
+        else
+        {
+            <button class="btn btn-outline-warning btn-lg rectangulo">$@ViewBag.Importes[i]</button>
+        }
+    }
+    </div>
+
+    <div class="col-md-8">
+        <div class="containerMaletin">
+            <div class="row">
+                @for(int i = 0; i < 26; i++){
+                        <div class="col-3">
+                            <div class="containerMaletin">
+                                @if(@ViewBag.Maletines[i].estado){
+                                        <img src="/img/maletin.png" style="width:100%;opacity:50%;" alt="Responsive image">
+                                        <div class="centered" style="color:#cdb246; font-size:3rem;">@(i+1)</div>
+                                }else{
+                                    <a href='@Url.Action("eleccionMaletin", "Juego",new {maletin=@i})'>
+                                        <img src="/img/maletin.png" style="width:100%;" alt="Responsive image">
+                                        <div class="centered" style="color:#cdb246; font-size:3rem;">@(i+1)</div>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    }
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="col-md-2">
+    @for(int i = 13; i < 26; i++){
+        if (ViewBag.ImportesDescartados.Contains(@ViewBag.Importes[i]))
+        {
+        <button class="btn btn-outline-secondary btn-lg rectangulo">$@ViewBag.Importes[i]</button>
+        }
+        else
+        {
+            <button class="btn btn-outline-warning btn-lg rectangulo">$@ViewBag.Importes[i]</button>
+        }
+    }
+    </div>
+    
+</div>

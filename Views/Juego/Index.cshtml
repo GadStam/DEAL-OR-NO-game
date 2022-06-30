@@ -1,0 +1,40 @@
+<div class="cuadroNegro">
+    <div class="containerTitulo">
+        <h1>ES HORA DE JUGAR</h1>
+    </div>
+    <center>
+        <p style="color:white;">Elegi uno de los maletines que se encuentran</p></b>
+    </center>
+</div>
+
+
+<div class="row">
+    <div class="col-md-2">
+    @for(int i = 0; i < 13; i++){
+        <button class="btn btn-outline-warning btn-lg rectangulo">$@ViewBag.Importes[i]</button>
+    }
+    </div>
+
+    <div class="col-md-8">
+        <div class="containerMaletin">
+            <div class="row">
+                @for(int i = 0; i < 26; i++){
+                        <div class="col-3">
+                            <div class="containerMaletin">
+                            <a href='@Url.Action("elegirPrimerMaletin", "Juego",new {maletin=@i})'>
+                                <img src="/img/maletin.png" style="width:100%;" alt="Responsive image">
+                                <div class="centered" style="color:#cdb246; font-size:3rem;">@(i+1)</div>
+                            </a>
+                            </div>
+                        </div>
+                    }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        @for(int i = 0; i < 13; i++){
+            <button class="btn btn-outline-warning btn-lg rectangulo">$@ViewBag.Importes[i+13]</button>
+        }
+    </div>
+</div>
